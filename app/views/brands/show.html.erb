@@ -24,7 +24,7 @@
         <%= @brand.raters.pluck(:username).to_sentence %>
 
         <% if @brand.raters.count == 0 %>
-        be the first to rate
+        be the first to like
         <% elsif @brand.raters.count > 1  %>
         rated
         <% else %>
@@ -52,7 +52,7 @@
 
           <!-- Label and input for brand_id -->
           <div class="form-group">
-            <label for="brand_id" class="sr-only">
+            <label for="brand_id" class="control-label">
               Brand
             </label>
 
@@ -75,30 +75,25 @@
             <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
 
           <button class="btn btn-success">
-            Comment <i class="fa fa-commenting-o fa-lg" aria-hidden="true"></i>
+            Create Comment
           </button>
           or
           <a href="/comments">Cancel</a>
         </form>
+
+
       </dl>
 
-      <hr>
-
-      <div class="row">
-        <div class="col-md-12">
-          <div class="btn-group">
-            <a href="/brands" class="btn btn-primary">
-              <i class="fa fa-chevron-left fa-lg" aria-hidden="true"></i>
-            </a>
-            <a href="/brands/<%= @brand.id %>/edit" class="btn btn-warning">
-               <i class="fa fa-edit fa-lg" aria-hidden="true">  </i>
-            </a>
-            <a href="/delete_brand/<%= @brand.id %>" class="btn btn-danger" rel="nofollow">
-              <i class="fa fa-trash-o fa-lg" aria-hidden="true">  </i>
-            </a>
-          </div>
-        </div>
+      <div class="btn-group">
+        <a href="/brands" class="btn btn-primary">
+          Back
+        </a>
+        <a href="/brands/<%= @brand.id %>/edit" class="btn btn-warning">
+          Edit
+        </a>
+        <a href="/delete_brand/<%= @brand.id %>" class="btn btn-danger" rel="nofollow">
+          Delete
+        </a>
       </div>
-
     </div>
   </div>

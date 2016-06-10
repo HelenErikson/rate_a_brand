@@ -9,18 +9,16 @@ class CommentsController < ApplicationController
 
   def new
     @comment = Comment.new
-
   end
 
   def create
-
     @comment = Comment.new
     @comment.brand_id = params[:brand_id]
     @comment.body = params[:body]
     @comment.user_id = params[:user_id]
 
     if @comment.save
-      redirect_to :back, :notice => "Thanks! Now every one will see your comment"
+      redirect_to "/comments", :notice => "Comment created successfully."
     else
       render 'new'
     end
