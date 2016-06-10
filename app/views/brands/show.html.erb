@@ -6,7 +6,7 @@
   <div class="col-md-12">
     <dl class="dl-horizontal">
       <dt>Name</dt>
-      <dd><%= @brand.name %></dd>
+      <dd><%= @brand.name %></dd> 
 
       <dt>Image url</dt>
       <dd>
@@ -46,63 +46,63 @@
         <% end %>
       </ul>
 
-        <form action="/create_comment" method="post">
-          <!-- Hidden input for authenticity token to protect from forgery -->
-          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+      <form action="/create_comment" method="post">
+        <!-- Hidden input for authenticity token to protect from forgery -->
+        <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
 
-          <!-- Label and input for brand_id -->
-          <div class="form-group">
-            <label for="brand_id" class="control-label">
-              Brand
-            </label>
+        <!-- Label and input for brand_id -->
+        <div class="form-group">
+          <label for="brand_id" class="control-label">
+            Brand
+          </label>
 
-            <input type="hidden" id="brand_id" name="brand_id" placeholder="Brand" class="form-control" value="<%= @brand.id %>">
-          </div>
+          <input type="hidden" id="brand_id" name="brand_id" placeholder="Brand" class="form-control" value="<%= @brand.id %>">
+        </div>
 
-          <!-- Label and input for body -->
-          <div class="form-group">
-            <label for="body" class="sr-only">
-              Body
-            </label>
+        <!-- Label and input for body -->
+        <div class="form-group">
+          <label for="body" class="sr-only">
+            Body
+          </label>
 
-            <input type="text" id="body" name="body" placeholder="Add a comment" class="form-control">
-           </div>
-
-          </div>
-
-          <!-- Label and input for user_id -->
-
-            <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
-
-          <button class="btn btn-success">
-            Create Comment
-          </button>
-          or
-          <a href="/comments">Cancel</a>
-        </form>
-
-
-      </dl>
-
-      <div class="btn-group btn-group-justified">
-        <a href="/brands" class="btn btn-primary">
-          Back
-        </a>
-
-
-        <a href="/brands/<%= @brand.id %>/edit" class="btn btn-warning">
-          Edit
-        </a>
-        <a href="/delete_brand/<%= @brand.id %>" class="btn btn-danger" rel="nofollow">
-          Delete
-        </a>
-
-
-
-
-
-
+          <input type="text" id="body" name="body" placeholder="Add a comment" class="form-control">
+        </div>
 
       </div>
-    </div>
+
+      <!-- Label and input for user_id -->
+
+      <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
+
+      <button class="btn btn-success">
+        Create Comment
+      </button>
+      or
+      <a href="/comments">Cancel</a>
+    </form>
+
+
+  </dl>
+
+  <div class="btn-group btn-group-justified">
+    <a href="/brands" class="btn btn-primary">
+      Back
+    </a>
+
+
+    <a href="/brands/<%= @brand.id %>/edit" class="btn btn-warning">
+      Edit
+    </a>
+    <a href="/delete_brand/<%= @brand.id %>" class="btn btn-danger" rel="nofollow">
+      Delete
+    </a>
+
+
+
+
+
+
+
   </div>
+</div>
+</div>

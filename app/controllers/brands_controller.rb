@@ -4,9 +4,9 @@ class BrandsController < ApplicationController
   skip_before_action :authenticate_user!, :only => [:index]
 
   def current_user_must_be_owner
-      @photo = Photo.find(params[:id])
+      @brand = Brand.find(params[:id])
 
-      if @photo.user != current_user
+      if @brand.user != current_user
         redirect_to root_url, :alert => "Not authorized for that"
       end
   end
