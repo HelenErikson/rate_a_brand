@@ -1,0 +1,41 @@
+<div class="page-header">
+  <h3>Brand #<%= @brand.id %></h3>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <dl class="dl-horizontal">
+      <dt>Name</dt>
+      <dd><%= @brand.name %></dd>
+
+      <dt>Image url</dt>
+      <dd><%= @brand.image_url %></dd>
+
+      <dt>User</dt>
+      <dd><%= @brand.user_id %></dd>
+
+      <dt>Review</dt>
+      <dd><%= @brand.review_id %></dd>
+
+    </dl>
+
+    <div class="btn-group btn-group-justified">
+      <a href="/brands" class="btn btn-primary">
+        Back
+      </a>
+
+
+      <% if current_user == @brand.user %>
+      <a href="/brands/<%= @brand.id %>/edit" class="btn btn-warning">
+        Edit
+      </a>  
+      <a href="/delete_brand/<%= @brand.id %>" class="btn btn-danger" rel="nofollow">
+        Delete
+      </a>
+      <% end %>
+
+
+
+    </div>
+  </div>
+</div>
