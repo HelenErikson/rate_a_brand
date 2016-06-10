@@ -25,6 +25,93 @@
         <div class="panel-body">
           <img src="<%= brand.image_url %>" width="150">
         </div>
+
+        <p>
+                  <% rating = Rating.find_by(:brand_id => brand.id, :user_id => current_user.id) %>
+                  <% if rating.present? %>
+                    <a href="/delete_rating/<%= rating.id %>" class="btn btn-link">
+                      <i class="fa fa-heart"></i>
+                    </a>
+                    <% if brand.raters.any? %>
+                    <%= brand.raters.pluck(:username).to_sentence %>
+                    <%= brand.raters.many? ? "rating" : "ratings" %>
+                    this
+                    <% end %>
+                  <% else %>
+                    <form action="/create_rating" method="post">
+                      <!-- Hidden input for authenticity token to protect from forgery -->
+                      <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+                      <input type="hidden" name="brand_id" value="<%= brand.id %>">
+
+                      <input type="hidden" name="user_id" value="<%= current_user.id %>">
+
+                      <button class="btn btn-link">
+                        <i class="fa fa-heart-o"></i>
+                      </button>
+
+                      <% if brand.raters.any? %>
+                      <%= brand.raters.pluck(:username).to_sentence %>
+                      <%= brand.raters.many? ? "rating" : "ratings" %>
+                      this
+                      <% else %>
+                      <small class="text-muted">be the first to rate this</small>
+                      <% end %>
+                    </form>
+                  <% end %>
+                </p>
+
+
+
+
+
+                <ul class="media-list">
+
+                          <% brand.comments.each do |comment| %>
+                          <li class="media">
+                            <div class="media-body">
+                              <h6 class="media-heading">
+                                <%= link_to comment.user.username, "/users/#{comment.user.id}" %>
+                                <small>
+                                  <%= time_ago_in_words(comment.created_at) %> ago
+                                  <% if comment.user == current_user %>
+                                    <a href="/delete_comment/<%= comment.id %>">
+                                      <i class="fa fa-trash"></i>
+                                    </a>
+                                  <% end %>
+                                </small>
+                              </h6>
+                              <%= comment.body %>
+                            </div>
+                          </li>
+                          <% end %>
+
+                          <li class="media">
+                            <div class="media-body">
+                              <form action="/create_comment" method="post">
+                                <!-- Hidden input for authenticity token to protect from forgery -->
+                                <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+                                <input type="hidden" name="brand_id" value="<%= brand.id %>">
+
+                                <input type="hidden" name="user_id" value="<%= current_user.id %>">
+
+                                <!-- Label and input for body -->
+                                <div class="form-group">
+                                  <label for="body" class="sr-only">
+                                    Body
+                                  </label>
+
+                                  <input type="text" id="body" name="body" placeholder="Add a comment..." class="form-control" required>
+                                </div>
+                              </form>
+                            </div>
+                          </li>
+                        </ul>
+
+
+
+
         <div class="panel-footer">
           <div class="row">
             <a href="/brands/<%= brand.id %>" class="btn btn-primary"><i class="fa fa-eye fa-lg" aria-hidden="true"></i></a>
