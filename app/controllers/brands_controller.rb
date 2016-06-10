@@ -1,5 +1,16 @@
 class BrandsController < ApplicationController
 
+  before_action :current_user_must_be_owner, :only => [:edit, :update, :destroy]
+  skip_before_action :authenticate_user!, :only => [:index]
+
+  def current_user_must_be_owner
+      @photo = Photo.find(params[:id])
+
+      if @photo.user != current_user
+        redirect_to root_url, :alert => "Not authorized for that"
+      end
+  end
+
   def my_likes
       @brands = current_user.rated_brands
   	end
@@ -11,7 +22,7 @@ class BrandsController < ApplicationController
 
   def show
     @brand = Brand.find(params[:id])
-    @comment = Comment.new   
+    @comment = Comment.new
   end
 
   def new
@@ -33,10 +44,12 @@ class BrandsController < ApplicationController
   end
 
   def edit
+    current_user_must_be_owner
     @brand = Brand.find(params[:id])
   end
 
   def update
+    current_user_must_be_owner
     @brand = Brand.find(params[:id])
 
     @brand.name = params[:name]
@@ -52,6 +65,7 @@ class BrandsController < ApplicationController
   end
 
   def destroy
+    current_user_must_be_owner
     @brand = Brand.find(params[:id])
 
     @brand.destroy
