@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
   has_many :brands
   has_many :comments
-  has_many :ratings
+  has_many :ratings, :dependent => :destroy
 
   has_many :rated_brands, :through => :ratings, :source => :brand
 

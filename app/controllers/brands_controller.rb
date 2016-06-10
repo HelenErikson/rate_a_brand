@@ -1,6 +1,6 @@
 class BrandsController < ApplicationController
 
-  before_action :current_user_must_be_owner, :only => [:edit, :update, :destroy]
+  before_action :current_user_must_be_owner, :only => [:destroy]
   skip_before_action :authenticate_user!, :only => [:index]
 
   def current_user_must_be_owner
@@ -44,12 +44,12 @@ class BrandsController < ApplicationController
   end
 
   def edit
-    current_user_must_be_owner
+    # current_user_must_be_owner
     @brand = Brand.find(params[:id])
   end
 
   def update
-    current_user_must_be_owner
+    # current_user_must_be_owner
     @brand = Brand.find(params[:id])
 
     @brand.name = params[:name]
