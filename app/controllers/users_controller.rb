@@ -5,7 +5,6 @@ class UsersController < ApplicationController
 
   def show
      @users = User.find(params[:id])
-     @brands = current_user.rated_brands
   end
 
 end
