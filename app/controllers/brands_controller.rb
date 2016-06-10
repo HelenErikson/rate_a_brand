@@ -18,11 +18,13 @@ class BrandsController < ApplicationController
 
   def index
     @brands = Brand.all
+    # @ratings = Rating.all
   end
 
   def show
     @brand = Brand.find(params[:id])
     @comment = Comment.new
+    @user = User.all
   end
 
   def new
@@ -58,7 +60,7 @@ class BrandsController < ApplicationController
     @brand.review_id = params[:review_id]
 
     if @brand.save
-      redirect_to "/brands", :notice => "Brand updated successfully."
+      redirect_to "/brands/", :notice => "Brand updated successfully."
     else
       render 'edit'
     end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160610010754) do
+ActiveRecord::Schema.define(version: 20160610191957) do
 
   create_table "brands", force: :cascade do |t|
     t.string   "name"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20160610010754) do
     t.integer  "review_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "about"
   end
 
   create_table "comments", force: :cascade do |t|

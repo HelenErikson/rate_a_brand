@@ -12,39 +12,49 @@
       <dd>
         <img src="<%= @brand.image_url %>" class="img-responsive">
       </dd>
-
-      <dt>User</dt>
+<hr>
+      <dt>Added by</dt>
       <dd><%= @brand.user_id %></dd>
 
-      <dt>Review</dt>
+      <dt>Last rating given</dt>
       <dd><%= @brand.review_id %></dd>
 
       <dt>Rated by</dt>
       <dd>
-        <%= @brand.raters.pluck(:username).to_sentence %>
 
-        <% if @brand.raters.count == 0 %>
+        <dd><%= @brand.raters.pluck(:username).to_sentence %></dd>
+
+        <dd><% if @brand.raters.count == 0 %>
         be the first to like
         <% elsif @brand.raters.count > 1  %>
         rated
         <% else %>
         rated
         <% end %>
-        this brand
-      </dd>
+        this brand</dd>
 
+
+      </dd>
+<hr>
       <dt>What people say</dt>
-      <ul>
-        <% @brand.comments.each do |comment| %>
-        <li>
-          <h6> <%= comment.user.username %> </h6>
-          <small>
-            <%= time_ago_in_words(comment.created_at) %> ago
-          </small>
-          <h7> <%= comment.body %>  </h7>
-        </li>
-        <% end %>
-      </ul>
+
+<div class="row">
+  <div class="col-md-6">
+    <ul>
+      <% @brand.comments.each do |comment| %>
+      <li>
+        <h6> <%= comment.user.username %> </h6>
+        <small>
+          <%= time_ago_in_words(comment.created_at) %> ago
+        </small>
+        <h7> <%= comment.body %>  </h7>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+
+</div>
+
 
       <form action="/create_comment" method="post">
         <!-- Hidden input for authenticity token to protect from forgery -->

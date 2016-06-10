@@ -20,7 +20,7 @@ before_action :authenticate_user!
     @rating.body = params[:body]
 
     if @rating.save
-      redirect_to "/ratings", :notice => "Rating created successfully."
+      redirect_to :back, :notice => "Heart successful."
     else
       render 'new'
     end
@@ -49,6 +49,6 @@ before_action :authenticate_user!
 
     @rating.destroy
 
-    redirect_to "/ratings", :notice => "Rating deleted."
+    redirect_to :back, :notice => "Rating deleted."
   end
 end

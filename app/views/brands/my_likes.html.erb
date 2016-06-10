@@ -20,14 +20,13 @@
       <tr>
         <td><%= brand.name %></td>
         <td>
-          <img src="<%= brand.image_url %>" class="img-responsive"/>
+          <img src="<%= brand.image_url %>" width="300">
         </td>
         <td><%= brand.user_id %></td>
         <td><%= brand.review_id %></td>
         <td>
-          <a href="/brands/<%= brand.id %>" class="btn btn-primary">Show</a>
-          <a href="/brands/<%= brand.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_brand/<%= brand.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <a href="/brands/<%= brand.id %>" class="btn btn-primary"><i class="fa fa-eye fa-lg" aria-hidden="true"></i></a>
+          <a href="/brands/<%= brand.id %>/edit" class="btn btn-warning"><i class="fa fa-plus" aria-hidden="true"></i></a>
         </td>
       </tr>
       <% end %>
