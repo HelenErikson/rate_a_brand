@@ -5,10 +5,10 @@
 <div class="row">
   <div class="col-md-12">
     <dl class="dl-horizontal">
-      <dt>Name</dt>
-      <dd><%= @brand.name %></dd>
+      <!-- <dt>Name</dt>
+      <dd><%# @brand.name %></dd>
 
-      <dt>Image url</dt>
+      <dt>Image</dt> -->
       <dd>
         <img src="<%= @brand.image_url %>" class="img-responsive">
       </dd>
@@ -78,28 +78,19 @@
         Create Comment
       </button>
       or
-      <a href="/comments">Cancel</a>
+      <a href="/brands">Cancel</a>
     </form>
-
+<hr>
 
   </dl>
 
   <div class="btn-group btn-group-justified">
-    <a href="/brands" class="btn btn-primary">
+    <!-- <a href="/brands" class="btn btn-primary">
       Back
-    </a>
+    </a> -->
     <a href="/brands/<%= @brand.id %>/edit" class="btn btn-warning">
       Edit
     </a>
-    <a href="/delete_brand/<%= @brand.id %>" class="btn btn-danger" rel="nofollow">
-      Delete
-    </a>
-
-
-
-
-
-
 
   </div>
 </div>

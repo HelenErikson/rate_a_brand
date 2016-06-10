@@ -27,9 +27,11 @@
           <img src="<%= brand.image_url %>" width="150">
         </div>
         <div class="panel-footer">
-          <a href="/brands/<%= brand.id %>" class="btn btn-primary">Show</a>
-          <a href="/brands/<%= brand.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_brand/<%= brand.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <div class="row">
+            <a href="/brands/<%= brand.id %>" class="btn btn-primary">Show</a>
+            <a href="/brands/<%= brand.id %>/edit" class="btn btn-warning">Edit</a>
+          </div>
+
         </div>
       </div>
     </div>

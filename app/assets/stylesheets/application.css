@@ -13,15 +13,3 @@
  *= require_tree .
  *= require_self
  */
-
-body {
-  background: #AA4847
-}
-
-.brand {
-  padding: 15px 0;
-  border-bottom: 1px solid #EAEAEA;
-  .star-rating {
-    padding-bottom: 8px;
-  }
-}
