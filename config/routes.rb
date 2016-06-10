@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   root "brands#index"
 
   get "/users", :controller => "users", :action => "index"
-get "/users/:id", :controller => "users", :action => "show"
+  get "/users/:id", :controller => "users", :action => "show"
 
-get "/my_likes", :controller => "brands", :action => "my_likes"
+  get "/my_likes", :controller => "brands", :action => "my_likes"
 
 
   # Routes for the Rating resource:
