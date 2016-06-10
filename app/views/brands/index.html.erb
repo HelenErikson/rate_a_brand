@@ -40,7 +40,9 @@
         <img src="<%= brand.image_url %>" width="200">
       </td>
       <td><%= brand.user_id %></td>
-      <td><%= brand.review_id %></td>
+      <td>
+        <%= brand.review_id.to_s %>
+      </td>
 
     </tr>
     <% end %>
