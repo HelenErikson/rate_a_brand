@@ -12,6 +12,7 @@ class BrandsController < ApplicationController
   end
 
   def my_likes
+      @brands = 
       @brands = current_user.rated_brands
   	end
 

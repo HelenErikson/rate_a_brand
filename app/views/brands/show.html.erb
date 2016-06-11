@@ -13,13 +13,13 @@
         <img src="<%= @brand.image_url %>" class="img-responsive">
       </dd>
 <hr>
-      <dt>Added by</dt>
-      <dd><%= @brand.user_id %></dd>
+      <dt>Added by :</dt>
+      <dd><%= User.find_by(:id => @brand.user_id).username %> </dd>
 
-      <dt>Last rating given</dt>
+      <dt>Score given from 1 - 10 :</dt>
       <dd><%= @brand.review_id %></dd>
 
-      <dt>Rated by</dt>
+      <dt><i class="fa fa-heart fa-lg" aria-hidden="true"></i> by :</dt>
       <dd>
 
         <dd><%= @brand.raters.pluck(:username).to_sentence %></dd>
@@ -36,7 +36,9 @@
 
       </dd>
 <hr>
-      <dt>What people say</dt>
+      <div class="">
+        <dt>Share your thoughts</dt>
+      </div>
 
 <div class="row">
   <div class="col-md-6">
@@ -62,7 +64,7 @@
 
         <!-- Label and input for brand_id -->
         <div class="form-group">
-          <label for="brand_id" class="control-label">
+          <label for="brand_id" class="sr-only">
             Brand
           </label>
 
@@ -84,11 +86,19 @@
 
       <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
 
-      <button class="btn btn-success">
-        Create Comment
-      </button>
+
+      <div class="btn-group btn-group-justified">
+        <a href="/brands/<%= @brand.id %>/edit" class="btn btn-warning">
+          See something wrong? Make an edit here
+        </a>
+      </div>
+
       or
-      <a href="/brands">Cancel</a>
+
+      <div class="btn-group btn-group-justified">
+        <a href="/brands">Cancel</a>
+      </div>
+
     </form>
 <hr>
 
@@ -98,9 +108,7 @@
     <!-- <a href="/brands" class="btn btn-primary">
       Back
     </a> -->
-    <a href="/brands/<%= @brand.id %>/edit" class="btn btn-warning">
-      Edit
-    </a>
+
 
   </div>
 </div>
